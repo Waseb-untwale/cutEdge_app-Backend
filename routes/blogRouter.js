@@ -5,7 +5,6 @@ const fs = require('fs');
 
 const router = express.Router();
 const blogCtrl = require('../controllers/blogCtrl');
-const uploadSingle = require('../middleware/uploadSingle');
 
 const uploadDir = path.join(__dirname, '../uploads');
 if (!fs.existsSync(uploadDir)) {
@@ -39,7 +38,7 @@ const upload = multer({
 });
 
 
-router.post('/add-blog', uploadSingle.single('image'), blogCtrl.addNews);
+router.post('/add-blog', upload.single('image'), blogCtrl.addNews);
 router.get('/blogs', blogCtrl.getNews);
 router.put('/update-blog/:id', upload.single('image'), blogCtrl.updateNews);
 router.get('/getBlogById/:id', blogCtrl.getBlogById)

@@ -7,6 +7,7 @@ const blogSchema = new mongoose.Schema({
     },
     category:{
         type:String,
+        unique:true,
         required:true
     },
     description:{
@@ -22,7 +23,10 @@ const blogSchema = new mongoose.Schema({
         required:true,
        
     },
-    image:{}
+    image:{
+        type:String,
+        required:true,
+    },
 },{
   timestamps:true
 })
