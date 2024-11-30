@@ -17,12 +17,13 @@ const userCtrl = {
       });
       await newBlog.save();
       res.status(201).json({
+        status: true,
         message: "Blog post created!",
         blog: newBlog
       });
     } catch (err) {
       console.error(err);
-      res.status(500).json({ message: "Error creating blog post" });
+      res.status(500).json({status: false, message: "Error creating blog post" });
     }
   },
 
